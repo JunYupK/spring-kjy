@@ -2,6 +2,7 @@ package com.kjy.multithread;
 
 import com.kjy.database.UserEntity;
 import com.kjy.database.UserRepository;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 public class MultiController {
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    private RedissonClient redissonClient;
 
     @GetMapping("{id}/check")
     public UserEntity check(@PathVariable int id){
@@ -29,4 +32,10 @@ public class MultiController {
         }
         return ResponseEntity.notFound().build();
     }
+
+//    @GetMapping("/redis")
+//    public ResponseEntity<?> redisCheck(){
+//        redissonClient.
+//    }
+
 }
