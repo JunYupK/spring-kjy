@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayDeque;
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -30,6 +31,7 @@ public class MultiController {
     public UserEntity check(@PathVariable int id){
         UserEntity user = userRepository.findById(id);
         System.out.println(user.getId());
+        ArrayDeque<Integer> q = new ArrayDeque<>();
         return user;
     }
 
